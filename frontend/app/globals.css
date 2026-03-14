@@ -1,45 +1,95 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@plugin "@tailwindcss/typography";
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
 
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-medium tracking-tight;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
-@utility container {
-  margin: 0 auto;
-  padding: 0 2rem;
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
 
-@theme {
-  --shadow-layer: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+.ant-menu-horizontal .ant-menu-item {
+  transition: all 0.25s ease;
+}
 
-  --color-framework: #000;
-  --color-black: #0b0b0b;
-  --color-white: #fff;
-  --color-brand: #f50;
-  --color-blue: #0052ff;
-  --color-yellow: #cdea19;
-  --color-gray-50: #f6f6f8;
-  --color-gray-100: #eeeef1;
-  --color-gray-200: #e3e4e8;
-  --color-gray-300: #bbbdc9;
-  --color-gray-400: #9499ad;
-  --color-gray-500: #727892;
-  --color-gray-600: #515870;
-  --color-gray-700: #383d51;
-  --color-gray-800: #252837;
-  --color-gray-900: #1b1d27;
-  --color-gray-950: #13141b;
+/* bỏ gạch chân active */
+.ant-menu-horizontal > .ant-menu-item::after,
+.ant-menu-horizontal > .ant-menu-submenu::after {
+  border-bottom: none !important;
+}
 
-  --default-transition-duration: 250ms;
+/* màu menu khi active */
+.ant-menu-horizontal .ant-menu-item-selected {
+  color: #FBD596 !important;
+}
+
+/* màu hover */
+.ant-menu-horizontal .ant-menu-item:hover {
+  color: #FBD596 !important;
+  font-weight: bold;
+  transform: scale(1.15);
+}
+
+/* desktop mặc định */
+.desktop-menu {
+  display: flex;
+}
+
+.mobile-menu-btn {
+  display: none;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+
+  .desktop-menu {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: block !important;
+  }
+  
+  .mobile-menu-btn:hover{
+    color: #FBD596 !important;
+    font-weight: bold;
+    transform: scale(1.15);
+  }
+
 }

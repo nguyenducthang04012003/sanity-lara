@@ -1,94 +1,204 @@
-import {Suspense} from 'react'
-import Link from 'next/link'
-import {PortableText} from '@portabletext/react'
+'use client'
 
-import {AllPosts} from '@/app/components/Posts'
-import GetStartedCode from '@/app/components/GetStartedCode'
-import SideBySideIcons from '@/app/components/SideBySideIcons'
-import {settingsQuery} from '@/sanity/lib/queries'
-import {sanityFetch} from '@/sanity/lib/live'
-import {dataAttr} from '@/sanity/lib/utils'
+import Image from 'next/image'
+import '../styles/HomePage.css'
 
-export default async function Page() {
-  const {data: settings} = await sanityFetch({
-    query: settingsQuery,
-  })
+const HomePage = () => {
+  type Product = {
+    id: number
+    category: string
+    name: string
+    image: string
+  }
+
+  type News = {
+    id: number
+    title: string
+    date: string
+    description: string
+    image: string
+  }
+
+  const productData: Product[] = [
+    {
+      id: 1,
+      category: 'Acrylic',
+      name: 'LV 24 – STRIPED',
+      image: '/images/img_product_homepage1.jpg',
+    },
+    {
+      id: 2,
+      category: 'Acrylic',
+      name: 'LV 155 – RED VEINS',
+      image: '/images/img_product_homepage2.jpg',
+    },
+    {
+      id: 3,
+      category: 'Acrylic',
+      name: 'LVH 75 – GREY',
+      image: '/images/img_product_homepage3.jpg',
+    },
+    {
+      id: 4,
+      category: 'Acrylic',
+      name: 'LVH 83 – BLUE',
+      image: '/images/img_product_homepage4.jpg',
+    },
+  ]
+
+  const newsData: News[] = [
+    {
+      id: 1,
+      title: 'KHÔNG GIAN PHÒNG NGỦ HIỆN ĐẠI VỚI CÁNH ACRYLIC',
+      date: '27/09/2025',
+      description:
+        'Vì sao nên chọn cánh Acrylic cho phòng ngủ hiện đại? Phòng ngủ không chỉ là nơi nghỉ ngơi mà còn là không gian thể hiện phong cách sống của gia chủ.',
+      image: '/images/catalog1.jpg',
+    },
+    {
+      id: 2,
+      title: 'CÁNH ACRYLIC LIVAS VINA – ĐỒNG HÀNH TRONG TỪNG KHÔNG GIAN',
+      date: '24/09/2025',
+      description:
+        'Vì sao cánh Acrylic là lựa chọn tối ưu cho nội thất hiện đại? Trong xu hướng thiết kế nội thất ngày nay, sự kết hợp giữa thẩm mỹ và độ bền luôn được ưu tiên.',
+      image: '/images/catalog2.jpg',
+    },
+    {
+      id: 3,
+      title: 'VÌ SAO CÁNH ACRYLIC ĐƯỢC ƯA CHUỘNG TRONG CÁC CĂN HỘ CAO CẤP?',
+      date: '16/09/2025',
+      description:
+        'Trong thiết kế nội thất hiện đại, đặc biệt là các căn hộ cao cấp, cánh Acrylic ngày càng trở thành lựa chọn ưu tiên.',
+      image: '/images/catalog2.jpg',
+    },
+  ]
 
   return (
-    <>
-      <div className="relative">
-        <div className="relative bg-[url(/images/tile-1-black.png)] bg-size-[5px]">
-          <div className="bg-gradient-to-b from-white w-full h-full absolute top-0"></div>
-          <div className="container">
-            <div className="relative min-h-[40vh] mx-auto max-w-2xl pt-10 xl:pt-20 pb-30 space-y-6 lg:max-w-4xl lg:px-12 flex flex-col items-center justify-center">
-              <div className="flex flex-col gap-4 items-center">
-                <div className="text-md leading-6 prose uppercase py-1 px-3 bg-white font-mono italic">
-                  A starter template for
-                </div>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black">
-                  <Link
-                    className="underline decoration-brand hover:text-brand underline-offset-8 hover:underline-offset-4 transition-all ease-out"
-                    href="https://sanity.io/"
-                  >
-                    Sanity
-                  </Link>
-                  +
-                  <Link
-                    className="underline decoration-black text-framework underline-offset-8 hover:underline-offset-4 transition-all ease-out"
-                    href="https://nextjs.org/"
-                  >
-                    Next.js
-                  </Link>
-                </h1>
-              </div>
+    <div className="home-page">
+      <div className="hero">
+        <Image src="/images/livas1.jpg" alt="Livas" width={300} height={200} />
+        <div className="content">
+          <h1>LARA ACRYLIC</h1>
+          <p style={{fontSize: 21}}>
+            Định hình không gian, tô điểm phong cách cùng vật liệu Acrylic
+          </p>
+        </div>
+      </div>
+
+      <div className="introduce">
+        <h1 className="title">Giới thiệu về Lara</h1>
+        <p style={{fontSize: 18, marginBottom: 0}}>
+          Công ty TNHH LIVAS VINA là doanh nghiệp hoạt động trong lĩnh vực gia công cánh Acrylic no
+          line với mục tiêu mang đến cho khách hàng những công trình như ý, những không gian sống lý
+          tưởng. Trong hơn 7 năm hoạt động, Livas Vina đã được tin tưởng và thực hiền nhiều dự án
+          với các đối tác lớn nhỏ như XHome, V6 Design, Halam Furniture,…
+        </p>
+
+        <Image
+          src="/images/kitchen.png"
+          alt="Kitchen"
+          width={300}
+          height={200}
+          style={{width: '100%'}}
+        />
+      </div>
+
+      <div className="introduce">
+        <h1 className="title">Sản phẩm tiêu biểu</h1>
+
+        <div className="lightproduct">
+          {productData.map((item) => (
+            <div key={item.id}>
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={300}
+                height={200}
+                className="product-img"
+              />
+
+              <p
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  color: '#0000005a',
+                  marginBottom: 0,
+                }}
+              >
+                {item.category}
+              </p>
+
+              <p className="nameproduct">{item.name}</p>
             </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="introduce">
+        <h1 className="title">Danh mục loại sản phẩm</h1>
+
+        <div className="catalog-card">
+          <Image
+            src="/images/catalog1.jpg"
+            alt="danh muc 1"
+            width={300}
+            height={200}
+            className="catalog-img"
+          />
+
+          <div className="catalog">
+            <h3 className="catalog-title">Acrylic</h3>
+
+            <p className="catalog-desc">
+              Vật liệu nhiệt dẻo cao cấp, nổi bật với độ bóng gương, trọng lượng nhẹ, độ bền cao và
+              khả năng chống tia UV, được tinh chế từ dầu mỏ
+            </p>
           </div>
         </div>
-        <div className=" flex flex-col items-center">
-          <SideBySideIcons />
-          <div className="container relative mx-auto max-w-2xl pb-20 pt-10 space-y-6 lg:max-w-4xl lg:px-12 flex flex-col items-center">
-            <div className="prose sm:prose-lg md:prose-xl xl:prose-2xl text-gray-700 prose-a:text-gray-700 font-light text-center">
-              {settings?.description && (
-                <div
-                  data-sanity={dataAttr({
-                    id: settings._id,
-                    type: 'settings',
-                    path: 'description',
-                  }).toString()}
-                >
-                  <PortableText value={settings.description} />
-                </div>
-              )}
-              <div className="flex items-center flex-col gap-4">
-                <GetStartedCode />
-                <Link
-                  href="https://www.sanity.io/docs"
-                  className="inline-flex text-brand text-xs md:text-sm underline hover:text-gray-900"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Sanity Documentation
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    className="w-4 h-4 ml-1 inline"
-                    fill="currentColor"
-                  >
-                    <path d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V12L17.206 8.207L11.2071 14.2071L9.79289 12.7929L15.792 6.793L12 3H21Z"></path>
-                  </svg>
-                </Link>
-              </div>
-            </div>
+
+        <div className="catalog-card">
+          <Image
+            src="/images/catalog2.jpg"
+            alt="danh muc 2"
+            width={300}
+            height={200}
+            className="catalog-img"
+          />
+
+          <div className="catalog">
+            <h3 className="catalog-title">Acrylic - Chống trầy xước</h3>
+
+            <p className="catalog-desc">
+              loại vật liệu nhựa tổng hợp cao cấp, được phủ lớp bề mặt cứng chuyên dụng trên cốt gỗ,
+              có khả năng chịu xước, va đập cao hơn hẳn
+            </p>
           </div>
         </div>
       </div>
-      <div className="border-t border-gray-100 bg-gray-50">
-        <div className="container">
-          <aside className="py-12 sm:py-20">
-            <Suspense>{await AllPosts()}</Suspense>
-          </aside>
+
+      <div className="listNews">
+        <h2 className="title" style={{marginTop: 0}}>
+          Danh sách tin tức
+        </h2>
+
+        <div className="news-grid">
+          {newsData.map((item) => (
+            <div className="news-card" key={item.id}>
+              <div className="news-image">
+                <Image src={item.image} alt={item.title} width={400} height={250} />
+              </div>
+
+              <h3 className="news-title">{item.title}</h3>
+
+              <p className="news-date">{item.date}</p>
+
+              <p className="news-desc">{item.description}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
+
+export default HomePage

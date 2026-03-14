@@ -99,3 +99,41 @@ export const pagesSlugs = defineQuery(`
   *[_type == "page" && defined(slug.current)]
   {"slug": slug.current}
 `)
+
+export const newsQuery = `
+*[_type == "post"] | order(publishedAt desc){
+  _id,
+  title,
+  excerpt,
+  publishedAt,
+  slug,
+  "thumbnail": thumbnail.asset->url
+}
+`
+
+export const newsDetailQuery = `
+*[_type == "post" && slug.current == $slug][0]{
+  _id,
+  title,
+  slug,
+  excerpt,
+  author,
+  publishedAt,
+  seoTitle,
+  seoDescription,
+
+  "thumbnail": thumbnail.asset->url,
+
+  content[]{
+    ...,
+    _type == "image" => {
+      ...,
+      "url": asset->url
+    }
+  },
+
+  "gallery": gallery[]{
+    "url": asset->url
+  }
+}
+`
