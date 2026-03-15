@@ -37,7 +37,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #FBD596;
 }
 button:focus,
 button:focus-visible {
@@ -49,26 +49,51 @@ button:focus-visible {
 }
 
 /* bỏ gạch chân active */
+/* bỏ gạch chân */
 .ant-menu-horizontal > .ant-menu-item::after,
 .ant-menu-horizontal > .ant-menu-submenu::after {
   border-bottom: none !important;
 }
 
-/* màu menu khi active */
-.ant-menu-horizontal .ant-menu-item-selected {
+/* màu chữ mặc định */
+.ant-menu-horizontal .ant-menu-item,
+.ant-menu-horizontal .ant-menu-submenu-title {
+  color: #222;
+  transition: all 0.25s ease;
+}
+
+/* hover */
+.ant-menu-horizontal .ant-menu-item:hover,
+.ant-menu-horizontal .ant-menu-submenu-title:hover {
+  color: #FBD596 !important;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+/* active */
+.ant-menu-horizontal .ant-menu-item-selected,
+.ant-menu-horizontal .ant-menu-submenu-selected > .ant-menu-submenu-title {
   color: #FBD596 !important;
 }
 
-/* màu hover */
-.ant-menu-horizontal .ant-menu-item:hover {
+/* submenu active */
+.ant-menu-horizontal .ant-menu-submenu-selected > .ant-menu-submenu-title {
   color: #FBD596 !important;
-  font-weight: bold;
-  transform: scale(1.15);
+}
+
+.desktop-menu .ant-menu-item a,
+.desktop-menu .ant-menu-submenu-title a{
+  color: inherit !important;
+}
+
+.desktop-menu .ant-menu-overflow {
+  justify-content: flex-end;
 }
 
 /* desktop mặc định */
 .desktop-menu {
   display: flex;
+  justify-content: flex-end;
 }
 
 .mobile-menu-btn {

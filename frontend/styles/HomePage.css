@@ -309,6 +309,15 @@
   gap:40px;
 }
 
+.products-grid{
+  width:1200px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
 /* card */
 
 .news-card{
@@ -334,12 +343,17 @@
 
 /* title */
 
-.news-title{
+.news-title {
   color: #000;
-  font-size:20px;
-  font-weight:600;
-  margin-top:18px;
-  line-height:1.4;
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;       /* giới hạn 2 dòng */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .news-title:hover{

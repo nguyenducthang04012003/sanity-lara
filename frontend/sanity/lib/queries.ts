@@ -137,3 +137,44 @@ export const newsDetailQuery = `
   }
 }
 `
+
+export const categoriesQuery = `
+*[_type == "category"] | order(title asc){
+  _id,
+  title,
+  "slug": slug.current
+}
+`
+
+export const productsQuery = `
+*[_type == "product"]{
+  _id,
+  name,
+  description,
+  size,
+  color,
+  madein,
+  "image": image.asset->url,
+  "madeinflag": madeinflag.asset->url,
+  category->{
+    _id,
+    title,
+    "slug": slug.current
+  }
+}
+`
+
+export const productsByCategoryQuery = `
+*[_type == "product" && category->slug.current == $categorySlug]{
+  _id,
+  name,
+  description,
+  size,
+  color,
+  "image": image.asset->url,
+  "category": category->{
+    title,
+    "slug": slug.current
+  }
+}
+`

@@ -1,65 +1,84 @@
-"use client";
-import { Layout, Menu, Drawer, Button } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+'use client'
 
-const { Header } = Layout;
+import {Layout, Menu, Drawer, Button} from 'antd'
+import {MenuOutlined} from '@ant-design/icons'
+import {useState, useEffect, useRef} from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import {usePathname} from 'next/navigation'
 
-export default function Topbar() {
-  const pathname = usePathname();
+const {Header} = Layout
 
-  const [visible, setVisible] = useState(true);
-  const [lastScroll, setLastScroll] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+type Category = {
+  _id: string
+  title: string
+  slug: string
+}
+
+export default function Topbar({categories}: {categories: Category[]}) {  
+  const pathname = usePathname()
+
+  const [visible, setVisible] = useState(true)
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
+
+  const lastScroll = useRef(0)
 
   const items = [
-    { key: "/", label: <Link href="/">Trang chủ</Link> },
-    { key: "/introduce", label: <Link href="/introduce">Giới thiệu</Link> },
-    { key: "/products", label: <Link href="/products">Sản phẩm</Link> },
-    { key: "/news", label: <Link href="/news">Tin tức</Link> },
-    { key: "/contact", label: <Link href="/contact">Liên hệ</Link> },
-    { key: "/visualizer", label: <Link href="/visualizer">3D Visualizer</Link> },
-  ];
+    {key: '/', label: <Link href="/">Trang chủ</Link>},
+    {key: '/introduce', label: <Link href="/introduce">Giới thiệu</Link>},
+
+    {
+      key: '/products',
+      label: <Link href="/products">Sản phẩm</Link>,
+      popupClassName: 'mega-menu',
+      children: categories.map((c) => ({
+        key: c.slug,
+        label: <Link href={`/products/${c.slug}`}>{c.title}</Link>,
+      })),
+    },
+
+    {key: '/news', label: <Link href="/news">Tin tức</Link>},
+    {key: '/contact', label: <Link href="/contact">Liên hệ</Link>},
+    {key: '/visualizer', label: <Link href="/visualizer">3D Visualizer</Link>},
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScroll = window.scrollY;
+      const current = window.scrollY
 
-      setScrolled(currentScroll > 20);
+      setScrolled(current > 20)
 
-      if (currentScroll > lastScroll) {
-        setVisible(false);
+      if (current > lastScroll.current && current > 80) {
+        setVisible(false)
       } else {
-        setVisible(true);
+        setVisible(true)
       }
 
-      setLastScroll(currentScroll);
-    };
+      lastScroll.current = current
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll, {passive: true})
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScroll]);
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <Header
       style={{
-        position: "fixed",
+        position: 'fixed',
         top: 0,
         left: 0,
-        width: "100%",
-        zIndex: 1000,
+        width: '100%',
         height: 70,
-        padding: "0 20px",
-        display: "flex",
-        alignItems: "center",
-        transform: visible ? "translateY(0)" : "translateY(-100%)",
-        background: scrolled ? "#fff" : "transparent",
-        transition: "all 0.35s ease",
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0 40px',
+        zIndex: 1000,
+        transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+        transition: 'all 0.35s ease',
+        background: scrolled ? 'rgba(255,255,255,0.9)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(10px)' : 'none',
       }}
     >
       {/* LOGO */}
@@ -67,15 +86,9 @@ export default function Topbar() {
         <Image
           src="/images/logo-removebg-preview.png"
           alt="logo"
-          width={300}
-          height={80}
-          style={{
-            width: 300,
-            height: "auto",
-            objectFit: "contain",
-            paddingTop: "7%",
-            marginLeft: "25%",
-          }}
+          width={170}
+          height={60}
+          style={{objectFit: 'contain', cursor: 'pointer'}}
         />
       </Link>
 
@@ -83,13 +96,15 @@ export default function Topbar() {
       <Menu
         className="desktop-menu"
         mode="horizontal"
-        selectedKeys={[pathname]}
+        triggerSubMenuAction="hover"
+        selectedKeys={[pathname.startsWith('/products') ? '/products' : pathname]}
         items={items}
         style={{
-          marginLeft: "auto",
+          flex: 1,
+          marginLeft: 40,
           fontSize: 18,
-          borderBottom: "none",
-          background: "transparent",
+          borderBottom: 'none',
+          background: 'transparent',
         }}
       />
 
@@ -100,18 +115,13 @@ export default function Topbar() {
         icon={<MenuOutlined />}
         onClick={() => setOpen(true)}
         style={{
-          marginLeft: "auto",
           fontSize: 26,
+          marginLeft: 'auto',
         }}
       />
 
       {/* MOBILE DRAWER */}
-      <Drawer
-        title="Menu"
-        placement="right"
-        onClose={() => setOpen(false)}
-        open={open}
-      >
+      <Drawer placement="right" onClose={() => setOpen(false)} open={open} title="Menu">
         <Menu
           mode="vertical"
           selectedKeys={[pathname]}
@@ -120,5 +130,5 @@ export default function Topbar() {
         />
       </Drawer>
     </Header>
-  );
+  )
 }

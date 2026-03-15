@@ -7,14 +7,26 @@ import {usePathname} from 'next/navigation'
 
 const {Content} = Layout
 
-export default function MainLayout({children}: {children: React.ReactNode}) {
+type Category = {
+  _id: string
+  title: string
+  slug: string
+}
+
+export default function MainLayout({
+  children,
+  categories,
+}: {
+  children: React.ReactNode
+  categories: Category[]
+}) {
   const pathname = usePathname()
 
   const isStudio = pathname === '/studio' || pathname.startsWith('/studio/')
 
   return (
     <Layout style={{minHeight: '100vh'}}>
-      {!isStudio && <Topbar />}
+      {!isStudio && <Topbar categories={categories} />}
 
       <Content style={{minHeight: '100vh'}}>
         {children}
