@@ -1,0 +1,64 @@
+.contact-right {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 999;
+}
+
+.iconcontact {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  background: #f4c67c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #fff;
+}
+
+/* hover icon */
+.iconcontact:hover {
+  transform: scale(1.1);
+}
+
+/* ===== Tooltip ===== */
+.tooltip {
+  position: absolute;
+  right: 70px;
+  white-space: nowrap;
+  background: #ffffff;
+  color: #000000;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+
+  opacity: 0;
+  transform: translateX(10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* mũi tên */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #111;
+}
+
+/* show khi hover */
+.iconcontact:hover .tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}

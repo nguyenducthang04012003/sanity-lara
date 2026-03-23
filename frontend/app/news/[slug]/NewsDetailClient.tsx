@@ -92,11 +92,11 @@ export default function NewsDetailClient({
     if (otherNews.length <= 3) return
 
     const timer = setInterval(() => {
-      next()
+      setIndex((prev) => (prev + visible < otherNews.length ? prev + 1 : 0))
     }, 2000)
 
     return () => clearInterval(timer)
-  }, [index])
+  }, [otherNews.length])
 
   return (
     <div className="componentNews">
@@ -158,7 +158,7 @@ export default function NewsDetailClient({
             <div key={item._id} className="otherCard">
               <div className="news-image">
                 <Image
-                  src={item.thumbnail || '/images/kitchen.png'}
+                  src={item.thumbnail || '/images/no-image.jpeg'}
                   alt={item.title}
                   width={400}
                   height={250}

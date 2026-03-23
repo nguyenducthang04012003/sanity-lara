@@ -153,11 +153,11 @@ export const productsQuery = `
   description,
   size,
   color,
-  madein,
   "image": image.asset->url,
-  "madeinflag": madeinflag.asset->url,
-  category->{
-    _id,
+
+  "slug": slug.current,
+
+  "category": category->{
     title,
     "slug": slug.current
   }
@@ -172,9 +172,44 @@ export const productsByCategoryQuery = `
   size,
   color,
   "image": image.asset->url,
+
+  "slug": slug.current,
+
   "category": category->{
     title,
     "slug": slug.current
   }
 }
+`
+
+export const productDetailQuery = `
+*[_type == "product" && slug.current == $slug][0]{
+  _id,
+  name,
+  description,
+  size,
+  color,
+  madein,
+  "image": image.asset->url,
+  "madeinflag": madeinflag.asset->url,
+
+  "slug": slug.current,
+
+  "category": category->{
+    title,
+    "slug": slug.current
+  }
+}
+`
+
+export const contactQuery = `
+  *[_type == "contact"]{
+    _id,
+    phone,
+    facebook,
+    zalo,
+    address,
+    email,
+    mapEmbed
+  }
 `

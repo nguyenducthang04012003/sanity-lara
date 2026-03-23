@@ -10,6 +10,8 @@ import button from './objects/button'
 import {blockContentTextOnly} from './objects/blockContentTextOnly'
 import product from './documents/product'
 import category from './documents/category'
+import contact from './documents/contact'
+import visualizer from './documents/colorVisualizer'
 
 // Export an array of all the schema types.  This is used in the Sanity Studio configuration. https://www.sanity.io/docs/studio/schema-types
 
@@ -18,6 +20,8 @@ export const schemaTypes = [
   settings,
   // Documents
   page,
+  visualizer,
+  contact,
   post,
   product,
   category,

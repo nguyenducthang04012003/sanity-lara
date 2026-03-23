@@ -16,8 +16,9 @@ type Product = {
   name: string
   image: string
   description: string
+  slug: string
   category: {
-    _id: string
+    _id?: string
     title: string
     slug: string
   }
@@ -84,7 +85,11 @@ export default function ProductsClient({
                     />
                   </div>
 
-                  <h3 className="news-title">{product.name}</h3>
+                  {product.slug && (
+                    <Link href={`/products/${product.category.slug}/${product.slug}`}>
+                      <h3 className="news-title">{product.name}</h3>
+                    </Link>
+                  )}
 
                   <p className="news-desc">{product.description}</p>
                 </div>

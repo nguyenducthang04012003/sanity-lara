@@ -1,0 +1,184 @@
+.introduce-container{
+  max-width: 1000px;
+  margin: auto;
+}
+
+.core-values{
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.core-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #f4c67c;
+  padding: 30px;
+  justify-content: center;
+}
+
+/* Title */
+.firstP {
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  z-index: 2;
+  color: #f4c67c;
+  font-size: 20px;
+}
+
+/* Nội dung ẩn */
+.lastP {
+  position: absolute;
+  bottom: -100%;
+  left: 30px;
+  right: 30px;
+  opacity: 0;
+  transition: all 0.4s ease;
+  color: #000;
+  font-size: 16px;
+}
+
+/* Hover */
+.core-item:hover .firstP {
+  transform: translateY(-100px);
+}
+
+.core-item:hover .lastP {
+  bottom: 30px;
+  opacity: 1;
+}
+
+/* ===== Tablet (<= 992px) ===== */
+@media (max-width: 992px) {
+  .core-values {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .core-item {
+    padding: 25px;
+  }
+
+  .firstP {
+    font-size: 18px;
+  }
+
+  .lastP {
+    font-size: 15px;
+  }
+
+  .core-item:hover .firstP {
+    transform: translateY(-100px);
+  }
+}
+
+/* ===== Mobile (<= 768px) ===== */
+@media (max-width: 768px) {
+  .core-values {
+    grid-template-columns: 1fr;
+  }
+
+  .core-item {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .core-item img {
+    margin: 0 auto 100px;
+  }
+
+  .firstP {
+    font-size: 17px;
+  }
+
+  .lastP {
+    font-size: 14px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .core-item:hover .firstP {
+    transform: translateY(-70px);
+  }
+}
+
+/* ===== Small mobile (<= 480px) ===== */
+@media (max-width: 480px) {
+  .core-item {
+    padding: 15px;
+  }
+
+  .firstP {
+    font-size: 16px;
+  }
+
+  .lastP {
+    font-size: 13px;
+  }
+
+  .core-item img {
+    width: 120px !important;
+    margin-bottom: 80px !important;
+  }
+
+  .core-item:hover .firstP {
+    transform: translateY(-60px);
+  }
+}
+
+/* mô tả */
+.commit-desc {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+/* layout */
+.commitment {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* item */
+.commititem {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* số */
+.commit-number {
+  font-size: 90px;
+  color: #f4c67c;
+  flex-shrink: 0;
+}
+
+/* content */
+.commit-content {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+/* title */
+.commit-title {
+  font-size: 24px;
+  color: #f4c67c;
+}
+
+/* text */
+.commit-text {
+  font-size: 16px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .commitment {
+    grid-template-columns: 1fr;
+  }
+
+  .commit-number {
+    font-size: 50px;
+  }
+}

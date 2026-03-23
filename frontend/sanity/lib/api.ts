@@ -5,6 +5,8 @@ import {
   categoriesQuery,
   productsQuery,
   productsByCategoryQuery,
+  productDetailQuery,
+  contactQuery,
 } from './queries'
 
 export async function getNews() {
@@ -27,6 +29,14 @@ export async function getProductsByCategory(categorySlug: string) {
   return client.fetch(productsByCategoryQuery, {
     categorySlug: categorySlug,
   })
+}
+
+export async function getProductDetail(slug: string) {
+  return client.fetch(productDetailQuery, {slug})
+}
+
+export async function getContactInfo() {
+  return client.fetch(contactQuery)
 }
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
