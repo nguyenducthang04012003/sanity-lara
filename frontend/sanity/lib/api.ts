@@ -7,6 +7,7 @@ import {
   productsByCategoryQuery,
   productDetailQuery,
   contactQuery,
+  visualizerQuery,
 } from './queries'
 
 export async function getNews() {
@@ -37,6 +38,10 @@ export async function getProductDetail(slug: string) {
 
 export async function getContactInfo() {
   return client.fetch(contactQuery)
+}
+
+export async function getVisualizerData() {
+  return client.fetch(visualizerQuery)
 }
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {

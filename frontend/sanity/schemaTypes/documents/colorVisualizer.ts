@@ -31,6 +31,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required(),
       description: 'Ảnh bạn tự thiết kế để minh họa màu, vân, texture',
     }),
 
@@ -40,14 +41,6 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
       description: 'Ví dụ: Màu trắng',
-    }),
-
-    defineField({
-      name: 'hex',
-      title: 'Mã màu (HEX)',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-      description: 'Ví dụ: #ffffff',
     }),
 
     defineField({

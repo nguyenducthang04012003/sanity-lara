@@ -213,3 +213,12 @@ export const contactQuery = `
     mapEmbed
   }
 `
+
+export const visualizerQuery = `*[_type == "visualizer"]{
+  _id,
+  title,
+  colorName,
+  size,
+  "baseImage": baseImage.asset->url,
+  "colorImage": colorImage.asset->url
+}`

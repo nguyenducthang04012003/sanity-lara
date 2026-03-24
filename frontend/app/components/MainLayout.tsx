@@ -37,14 +37,20 @@ export default function MainLayout({
 
   const isStudio = pathname === '/studio' || pathname.startsWith('/studio/')
 
+  const isHideContact =
+    pathname === '/studio' ||
+    pathname.startsWith('/studio/') ||
+    pathname === '/visualizer' ||
+    pathname.startsWith('/visualizer/')
+
   return (
     <Layout style={{minHeight: '100vh'}}>
       {!isStudio && <Topbar categories={categories} />}
 
       <Content style={{minHeight: '100vh'}}>
         {children}
-        {!isStudio && <ContactSection contact={contactInfo?.[0]}/>}
-        {!isStudio && <ContactRight contact={contactInfo?.[0]} />}
+        {!isHideContact && <ContactSection contact={contactInfo?.[0]} />}
+        {!isHideContact && <ContactRight contact={contactInfo?.[0]} />}
       </Content>
     </Layout>
   )

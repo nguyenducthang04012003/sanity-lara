@@ -45,18 +45,6 @@
   transition: all 0.3s ease;
 }
 
-/* mũi tên */
-.tooltip::after {
-  content: "";
-  position: absolute;
-  right: -6px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: transparent transparent transparent #111;
-}
-
 /* show khi hover */
 .iconcontact:hover .tooltip {
   opacity: 1;
