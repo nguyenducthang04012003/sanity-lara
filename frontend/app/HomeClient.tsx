@@ -144,7 +144,7 @@ export default function HomeClient({
         </div>
       </div>
 
-      <div className="listNews">
+      <div className="introduce">
         <div className="title-new-home">
           <h2 className="title" style={{marginTop: 0}}>
             Danh sách tin tức
