@@ -13,7 +13,7 @@ export default async function CategoryPage({params}: {params: Promise<{category:
 
   const categories = await getCategories()
   const products = await getProductsByCategory(category)
-  console.log('categories', categories, products)
+  // console.log('categories', categories, products)
 
   const currentCategory = categories.find((c: Category) => c.slug === category)
 

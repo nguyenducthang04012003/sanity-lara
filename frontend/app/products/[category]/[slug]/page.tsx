@@ -20,7 +20,7 @@ export default async function ProductDetail({
 
   const otherProducts = relatedProducts.filter((p: {slug: string}) => p.slug !== slug)
 
-  console.log('Product Detail:', product, 'Related Products:', relatedProducts)
+  // console.log('Product Detail:', product, 'Related Products:', relatedProducts)
 
   return <ProductDetailClient product={product} otherProducts={otherProducts} />
 }

@@ -6,7 +6,7 @@ export default async function NewsDetail({params}: {params: Promise<{slug: strin
 
   // bài viết hiện tại
   const news = await getNewsDetail(slug)
-  console.log('news', news)
+  // console.log('news', news)
 
   // tất cả tin
   const newsData = await getNews()
