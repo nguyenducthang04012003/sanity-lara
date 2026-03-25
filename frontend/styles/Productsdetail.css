@@ -139,14 +139,14 @@
   }
 
   .otherGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* 2 item mỗi hàng */
+    gap: 12px;
     padding: 0 10px;
   }
 
   .otherHeader {
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
   }
 
@@ -159,11 +159,12 @@
   }
 
   .news-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .news-desc {
-    font-size: 14px;
+    font-size: 12px;
+    -webkit-line-clamp: 2;
   }
 
   .arrow button {
