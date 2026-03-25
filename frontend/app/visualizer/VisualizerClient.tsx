@@ -54,7 +54,7 @@ export default function VisualizerClient({data}: {data: Visualizer[]}) {
                 alt={color.colorName}
                 width={80}
                 height={80}
-                style={{height: 70}}
+                style={{height: 70, width: "100%"}}
               />
               <p>{color.title}</p>
             </div>

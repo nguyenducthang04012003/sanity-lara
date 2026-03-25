@@ -330,7 +330,8 @@
 }
 
 .news-grid{
-  width:1200px;
+  width: 100%;
+  max-width: 1200px;
   margin:auto;
 
   display:grid;
@@ -345,6 +346,11 @@
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:20px;
+}
+
+.title-new-home{
+  display: flex;
+  justify-content: space-between;
 }
 
 /* card */
@@ -491,4 +497,195 @@
 .btn-submit:hover {
   background: #fff;
   color: #f4c67c;
+}
+
+/* ---------- Responsive HomePage ---------- */
+
+/* Hero */
+@media (max-width: 1200px) {
+  .content {
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .content h1 {
+    font-size: 42px;
+  }
+  .content p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .content h1 {
+    font-size: 32px;
+  }
+  .content p {
+    font-size: 16px;
+  }
+  .title-new-home{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Introduce sections */
+@media (max-width: 1200px) {
+  .introduce {
+    width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .introduce {
+    width: 95%;
+    margin-bottom: 30px;
+  }
+  .title {
+    font-size: 32px;
+    text-align: center;
+  }
+}
+
+/* Catalog card */
+@media (max-width: 1200px) {
+  .catalog-card {
+    height: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .catalog-card {
+    height: 180px;
+  }
+  .catalog-title {
+    font-size: 20px;
+  }
+  .catalog-desc {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .catalog-card {
+    height: 160px;
+  }
+  .catalog-title {
+    font-size: 18px;
+  }
+  .catalog-desc {
+    width: 80%;
+    font-size: 13px;
+  }
+}
+
+/* ---------- HomeClient Mobile 2 items per row ---------- */
+@media (max-width: 600px) {
+  /* Sản phẩm tiêu biểu */
+  .lightproduct {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    gap: 12px; /* khoảng cách nhỏ để vừa */
+  }
+
+  .product-img {
+    height: 180px; /* giảm chiều cao ảnh để vừa */
+  }
+
+  .nameproduct {
+    font-size: 14px; /* giảm chữ tên sản phẩm */
+  }
+
+  /* Danh sách tin tức */
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .news-image img {
+    height: 150px; /* giảm chiều cao ảnh */
+  }
+
+  .news-title {
+    font-size: 14px; /* giảm chữ tiêu đề */
+  }
+
+  .news-desc {
+    font-size: 12px; /* giảm chữ mô tả */
+  }
+
+  /* Pagination */
+  .pagination {
+    justify-content: center;
+  }
+}
+
+/* Buttons */
+@media (max-width: 900px) {
+  .btn-more {
+    font-size: 16px;
+  }
+  .arrow {
+    font-size: 14px;
+  }
+}
+
+/* Pagination */
+@media (max-width: 900px) {
+  .news-pagination {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pagination {
+    justify-content: center;
+  }
+}
+
+/* Contact form */
+@media (max-width: 900px) {
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .form-row input,
+  .form-row textarea {
+    width: 100%;
+  }
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+/* ---------- ProductsClient Mobile 2 items per row ---------- */
+@media (max-width: 600px) {
+  .products-grid {
+    padding: 10px;
+    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    gap: 12px; /* khoảng cách nhỏ hơn để vừa */
+    width: 100%;
+    margin: auto;
+  }
+
+  .news-card .news-image img {
+    height: 150px; /* giảm chiều cao ảnh để vừa 2 cột */
+  }
+
+  .news-title {
+    font-size: 14px; /* giảm chữ cho vừa */
+  }
+
+  .news-desc {
+    font-size: 12px; /* giảm chữ mô tả */
+  }
+
+  .pagination {
+    justify-content: center; /* căn giữa pagination */
+  }
 }

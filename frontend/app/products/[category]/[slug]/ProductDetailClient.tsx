@@ -62,7 +62,7 @@ export default function ProductDetailClient({
             alt={product.name}
             width={500}
             height={400}
-            style={{width: '100%'}}
+            className='img-product-detail'
           />
           {/* <div className="download-wrapper">
             <a

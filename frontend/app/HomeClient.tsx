@@ -64,7 +64,7 @@ export default function HomeClient({
       </div>
 
       <div className="introduce">
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <div className="title-new-home">
           <h1 className="title">Sản phẩm tiêu biểu</h1>
           <Link href="/products" className="btn-more">
             Xem thêm{' '}
@@ -145,7 +145,7 @@ export default function HomeClient({
       </div>
 
       <div className="listNews">
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <div className="title-new-home">
           <h2 className="title" style={{marginTop: 0}}>
             Danh sách tin tức
           </h2>

@@ -15,19 +15,17 @@ type Category = {
   slug: string
 }
 
-export default function Topbar({categories}: {categories: Category[]}) {  
+export default function Topbar({categories}: {categories: Category[]}) {
   const pathname = usePathname()
 
   const [visible, setVisible] = useState(true)
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
   const lastScroll = useRef(0)
 
   const items = [
     {key: '/', label: <Link href="/">Trang chủ</Link>},
     {key: '/introduce', label: <Link href="/introduce">Giới thiệu</Link>},
-
     {
       key: '/products',
       label: <Link href="/products">Sản phẩm</Link>,
@@ -37,7 +35,6 @@ export default function Topbar({categories}: {categories: Category[]}) {
         label: <Link href={`/products/${c.slug}`}>{c.title}</Link>,
       })),
     },
-
     {key: '/news', label: <Link href="/news">Tin tức</Link>},
     {key: '/contact', label: <Link href="/contact">Liên hệ</Link>},
     {key: '/visualizer', label: <Link href="/visualizer">3D Visualizer</Link>},
@@ -46,7 +43,6 @@ export default function Topbar({categories}: {categories: Category[]}) {
   useEffect(() => {
     const handleScroll = () => {
       const current = window.scrollY
-
       setScrolled(current > 20)
 
       if (current > lastScroll.current && current > 80) {
@@ -59,7 +55,6 @@ export default function Topbar({categories}: {categories: Category[]}) {
     }
 
     window.addEventListener('scroll', handleScroll, {passive: true})
-
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -73,7 +68,8 @@ export default function Topbar({categories}: {categories: Category[]}) {
         height: 70,
         display: 'flex',
         alignItems: 'center',
-        padding: '0 40px',
+        justifyContent: 'space-between', // logo trái, menu/button phải
+        padding: '0 20px',
         zIndex: 1000,
         transform: visible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'all 0.35s ease',
@@ -112,23 +108,87 @@ export default function Topbar({categories}: {categories: Category[]}) {
       <Button
         className="mobile-menu-btn"
         type="text"
-        icon={<MenuOutlined />}
         onClick={() => setOpen(true)}
         style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 0,
           fontSize: 26,
-          marginLeft: 'auto',
+          height: '100%',
         }}
+        icon={<MenuOutlined style={{fontSize: 26, display: 'block'}} />}
       />
 
       {/* MOBILE DRAWER */}
       <Drawer placement="right" onClose={() => setOpen(false)} open={open} title="Menu">
         <Menu
-          mode="vertical"
+          mode="inline" // inline để sub menu rớt xuống dọc
           selectedKeys={[pathname]}
-          items={items}
+          items={items.map((item) => ({
+            ...item,
+            children: item.children || undefined, // giữ sub menu nếu có
+          }))}
           onClick={() => setOpen(false)}
         />
       </Drawer>
+
+      <style jsx global>{`
+        /* desktop menu hover + active */
+        .ant-menu-horizontal .ant-menu-item,
+        .ant-menu-horizontal .ant-menu-submenu-title {
+          color: #222;
+          transition: all 0.25s ease;
+        }
+        .ant-menu-horizontal .ant-menu-item:hover,
+        .ant-menu-horizontal .ant-menu-submenu-title:hover {
+          color: #fbd596 !important;
+          font-weight: bold;
+          transform: scale(1.05);
+        }
+        .ant-menu-horizontal .ant-menu-item-selected,
+        .ant-menu-horizontal .ant-menu-submenu-selected > .ant-menu-submenu-title {
+          color: #fbd596 !important;
+        }
+
+        .desktop-menu .ant-menu-item a,
+        .desktop-menu .ant-menu-submenu-title a {
+          color: inherit !important;
+        }
+
+        /* desktop mặc định */
+        .desktop-menu {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        /* mobile */
+        @media (max-width: 900px) {
+          .desktop-menu {
+            display: none !important;
+          }
+
+          .mobile-menu-btn {
+            display: block !important;
+          }
+
+          .mobile-menu-btn:hover {
+            color: #fbd596 !important;
+            font-weight: bold;
+            transform: scale(1.15);
+          }
+
+          /* dấu mũi tên cho submenu mobile */
+          .ant-menu-inline .ant-menu-submenu-title::after {
+            right: 10px;
+            transform: rotate(0deg);
+            transition: transform 0.3s;
+          }
+          .ant-menu-inline .ant-menu-submenu-open .ant-menu-submenu-title::after {
+            transform: rotate(90deg);
+          }
+        }
+      `}</style>
     </Header>
   )
 }
