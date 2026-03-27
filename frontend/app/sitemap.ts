@@ -1,3 +1,5 @@
+export const revalidate = 0
+
 import {MetadataRoute} from 'next'
 import {sanityFetch} from '@/sanity/lib/live'
 import {sitemapData} from '@/sanity/lib/queries'
