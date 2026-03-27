@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
   const headersList = await headers()
   const sitemap: MetadataRoute.Sitemap = []
-  const domain = 'https://laraacrylic.com'
+  const domain = 'https://www.laraacrylic.com'
   sitemap.push({
     url: domain,
     lastModified: new Date(),
