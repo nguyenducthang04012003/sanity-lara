@@ -10,7 +10,7 @@ type Contact = {
   email?: string
 }
 
-export default function ContactSection({contact}: {contact: Contact}) {
+export default function ContactSection({contact}: {contact: Contact[]}) {
   return (
     <div className="contact-section">
       <div className="contact-container">
@@ -22,19 +22,17 @@ export default function ContactSection({contact}: {contact: Contact}) {
         </p>
 
         <div className="contact-info">
-          {/* ADDRESS */}
-          <div className="contact-block">
-            <h3>Địa chỉ</h3>
-            <p>{contact?.address}</p>
-          </div>
+          {contact?.map((item, index) => (
+            <div key={index} className="contact-block">
+              <h3>{contact.length > 1 ? `Cơ sở ${index + 1}` : 'Địa chỉ'}</h3>
 
-          {/* CONTACT */}
-          <div className="contact-block">
-            <h3>Phương thức liên hệ</h3>
+              {item?.address && <p>{item.address}</p>}
 
-            {contact?.phone && <p>{contact.phone}</p>}
-            {contact?.email && <p>{contact.email}</p>}
-          </div>
+              <h3>Phương thức liên hệ</h3>
+              {item?.phone && <p>{item.phone}</p>}
+              {item?.email && <p>{item.email}</p>}
+            </div>
+          ))}
         </div>
       </div>
 

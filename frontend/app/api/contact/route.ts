@@ -11,17 +11,18 @@ export async function POST(req: Request) {
     console.log('DATA:', {name, email, phone, address, message})
 
     const emailResult = await resend.emails.send({
-      from: 'Acrylic Store <onboarding@resend.dev>',
-      to: 'thangconconhung@gmail.com',
+      from: 'LARA Acrylic <contact@laraacrylic.com>',
+      to: ['thangconconhung@gmail.com', 'nguyenddungg357@gmail.com'],
+      replyTo: email,
       subject: 'Khách hàng mới liên hệ',
       html: `
-        <h2>Thông tin khách hàng</h2>
-        <p><strong>Họ tên:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>SĐT:</strong> ${phone}</p>
-        <p><strong>Địa chỉ:</strong> ${address}</p>
-        <p><strong>Nội dung:</strong> ${message}</p>
-      `,
+    <h2>Thông tin khách hàng</h2>
+    <p><strong>Họ tên:</strong> ${name}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>SĐT:</strong> ${phone}</p>
+    <p><strong>Địa chỉ:</strong> ${address}</p>
+    <p><strong>Nội dung:</strong> ${message}</p>
+  `,
     })
 
     console.log('EMAIL RESULT:', emailResult)

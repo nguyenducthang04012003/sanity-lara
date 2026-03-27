@@ -49,7 +49,7 @@ export default function MainLayout({
 
       <Content style={{minHeight: '100vh'}}>
         {children}
-        {!isHideContact && <ContactSection contact={contactInfo?.[0]} />}
+        {!isHideContact && <ContactSection contact={contactInfo} />}
         {!isHideContact && <ContactRight contact={contactInfo?.[0]} />}
       </Content>
     </Layout>

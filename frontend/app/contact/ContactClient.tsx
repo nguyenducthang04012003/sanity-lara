@@ -25,27 +25,43 @@ export default function ContactClient({contactsData}: {contactsData: Contact[]})
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setLoading(true)
 
-    const form = e.currentTarget // ⭐ lưu lại trước
-
+    const form = e.currentTarget
     const formData = new FormData(form)
 
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      address: formData.get('address'),
-      message: formData.get('message'),
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    const phone = formData.get('phone') as string
+    const address = formData.get('address') as string
+    const message = formData.get('message') as string
+
+    // ✅ Regex
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
+    const phoneRegex = /^[0-9]{10}$/
+
+    // ✅ Validate
+    if (!name || !phone) {
+      alert('Vui lòng nhập đầy đủ thông tin bắt buộc!')
+      return
     }
+
+    if (email && !gmailRegex.test(email)) {
+      alert('Email phải là Gmail hợp lệ (ví dụ: abc@gmail.com)')
+      return
+    }
+
+    if (!phoneRegex.test(phone)) {
+      alert('Số điện thoại phải đủ 10 chữ số!')
+      return
+    }
+
+    setLoading(true)
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, email, phone, address, message}),
       })
 
       if (!res.ok) throw new Error('API error')
@@ -89,9 +105,11 @@ export default function ContactClient({contactsData}: {contactsData: Contact[]})
       </div>
 
       {/* CONTACT LIST */}
-      {contactsData.map((contact) => (
+      {contactsData.map((contact, index) => (
         <div className="introduce" key={contact._id}>
-          <h1 className="title">Địa chỉ của chúng tôi</h1>
+          <h1 className="title">
+            {contactsData.length > 1 ? `Cơ sở ${index + 1}` : 'Địa chỉ của chúng tôi'}
+          </h1>
 
           {/* MAP */}
           {contact.mapEmbed && (
