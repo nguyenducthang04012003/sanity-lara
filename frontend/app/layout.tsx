@@ -1,6 +1,7 @@
 import MainLayout from './components/MainLayout'
 import './globals.css'
 import {getCategories, getContactInfo} from '@/sanity/lib/api'
+import {SanityLive} from '@/sanity/lib/live'
 
 export const metadata = {
   title: 'LARA Acrylic - Vật liệu nội thất cao cấp',
@@ -34,6 +35,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <MainLayout categories={categories} contactInfo={contactInfo}>
           {children}
         </MainLayout>
+        <SanityLive />
       </body>
     </html>
   )
