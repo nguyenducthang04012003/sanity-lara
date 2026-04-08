@@ -18,6 +18,7 @@
   flex-direction: column;
   border: 2px solid #f4c67c;
   padding: 30px;
+  padding-top: 60px;
   justify-content: center;
 }
 
@@ -33,22 +34,23 @@
 /* Nội dung ẩn */
 .lastP {
   position: absolute;
-  bottom: -100%;
+  bottom: -120%;
   left: 30px;
   right: 30px;
   opacity: 0;
   transition: all 0.4s ease;
   color: #000;
   font-size: 16px;
+  line-height: 1.6;
 }
 
 /* Hover */
 .core-item:hover .firstP {
-  transform: translateY(-100px);
+  transform: translateY(-120px);
 }
 
 .core-item:hover .lastP {
-  bottom: 30px;
+  bottom: 20px;
   opacity: 1;
 }
 

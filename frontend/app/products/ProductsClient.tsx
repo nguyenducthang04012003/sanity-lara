@@ -49,7 +49,7 @@ export default function ProductsClient({
       {/* HERO */}
       <div className="hero">
         <Image
-          src="/images/backgroundProduct.jpg"
+          src="/images/introduce1.jpg"
           alt="Livas"
           fill
           quality={100}
