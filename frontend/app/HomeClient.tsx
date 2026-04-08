@@ -30,7 +30,15 @@ export default function HomeClient({
   return (
     <div className="home-page">
       <div className="hero">
-        <Image src="/images/livas1.jpg" alt="Livas" width={300} height={200} />
+        <Image
+          src="/images/pageHome.jpg"
+          alt="Livas"
+          fill
+          quality={100}
+          priority
+          sizes="100vw"
+          style={{objectFit: 'cover'}}
+        />
         <div className="content">
           <h1>LARA ACRYLIC</h1>
           <p style={{fontSize: 21}}>
@@ -42,10 +50,13 @@ export default function HomeClient({
       <div className="introduce">
         <h1 className="title">Giới thiệu về Lara</h1>
         <p style={{fontSize: 18, marginBottom: 10}}>
-          Công ty TNHH LIVAS VINA là doanh nghiệp hoạt động trong lĩnh vực gia công cánh Acrylic no
-          line với mục tiêu mang đến cho khách hàng những công trình như ý, những không gian sống lý
-          tưởng. Trong hơn 7 năm hoạt động, Livas Vina đã được tin tưởng và thực hiền nhiều dự án
-          với các đối tác lớn nhỏ như XHome, V6 Design, Halam Furniture,…
+          Công ty TNHH SX và KD TM Hòa Thịnh (Thương hiệu LARA) là một trong những đơn vị sản xuất,
+          phân phối và thi công vật liệu Acrylic chất lượng cao tại thị trường Việt Nam.
+        </p>
+        <p style={{fontSize: 18, marginBottom: 10}}>
+          Sở hữu đội ngũ chuyên gia, kỹ sư giàu kinh nghiệm cùng dây chuyền sản xuất hiện đại đạt
+          tiêu chuẩn Châu Âu, LARA cam kết mang đến những sản phẩm hoàn thiện tốt nhất cho không
+          gian nội thất.
         </p>
         <Link href="/introduce" className="btn-more">
           Xem thêm{' '}
@@ -53,14 +64,6 @@ export default function HomeClient({
             <FaLongArrowAltRight />
           </span>
         </Link>
-
-        <Image
-          src="/images/kitchen.png"
-          alt="Kitchen"
-          width={300}
-          height={200}
-          style={{width: '100%'}}
-        />
       </div>
 
       <div className="introduce">

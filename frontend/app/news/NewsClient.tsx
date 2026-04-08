@@ -32,7 +32,15 @@ export default function NewsClient({newsData}: {newsData: News[]}) {
     <div className="home-page">
       {/* HERO */}
       <div className="hero">
-        <Image src="/images/backgroundNews.jpg" alt="background" width={1600} height={600} />
+        <Image
+          src="/images/newsbg.png"
+          alt="Livas"
+          fill
+          quality={100}
+          priority
+          sizes="100vw"
+          style={{objectFit: 'cover'}}
+        />
         <div className="content">
           <h1>Tin tức</h1>
           <p style={{fontSize: 18}}>

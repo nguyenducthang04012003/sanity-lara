@@ -48,8 +48,15 @@ export default function ProductsClient({
     <div className="home-page">
       {/* HERO */}
       <div className="hero">
-        <Image src="/images/backgroundProduct.jpg" alt="background" width={1600} height={600} />
-
+        <Image
+          src="/images/backgroundProduct.jpg"
+          alt="Livas"
+          fill
+          quality={100}
+          priority
+          sizes="100vw"
+          style={{objectFit: 'cover'}}
+        />
         <div className="content">
           <h1>Sản phẩm {categoryTitle}</h1>
           <p style={{fontSize: 18}}>Sáng không gian, sang đẳng cấp</p>

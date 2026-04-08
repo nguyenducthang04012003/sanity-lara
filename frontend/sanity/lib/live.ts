@@ -12,4 +12,8 @@ export const {sanityFetch, SanityLive} = defineLive({
   serverToken: process.env.SANITY_API_READ_TOKEN,
   // Required for stand-alone live previews, the token is only shared to the browser if it's a valid Next.js Draft Mode session
   browserToken: process.env.SANITY_API_READ_TOKEN,
+
+  fetchOptions: {
+    revalidate: 60,
+  },
 })
