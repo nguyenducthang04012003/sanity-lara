@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {FaLongArrowAltRight} from 'react-icons/fa'
+import {useRouter} from 'next/navigation'
 import '../styles/HomePage.css'
 
 type Product = {
@@ -27,6 +28,7 @@ export default function HomeClient({
   productData: Product[]
   newsData: News[]
 }) {
+  const router = useRouter()
   return (
     <div className="home-page">
       <div className="hero">
@@ -108,7 +110,7 @@ export default function HomeClient({
       <div className="introduce">
         <h1 className="title">Danh mục loại sản phẩm</h1>
 
-        <div className="catalog-card">
+        <div className="catalog-card" onClick={() => router.push('/products/acrylic')}>
           <Image
             src="/images/catalog1.jpg"
             alt="danh muc 1"
@@ -127,7 +129,7 @@ export default function HomeClient({
           </div>
         </div>
 
-        <div className="catalog-card">
+        <div className="catalog-card" onClick={() => router.push('/products/acrylic-chong-tray-xuoc')}>
           <Image
             src="/images/catalog2.jpg"
             alt="danh muc 2"
