@@ -33,8 +33,8 @@ const HomePage = () => {
 
             <p>
               <span className="dropcap">C</span>
-              ông ty TNHH SX và KD TM Hòa Thịnh (Thương hiệu LARA) là một trong những đơn vị sản
-              xuất, phân phối và thi công vật liệu Acrylic chất lượng cao tại thị trường Việt Nam.
+              ông ty TNHH SX và KD TM Kim Anh (Thương hiệu LARA) là một trong những đơn vị sản xuất,
+              phân phối và thi công vật liệu Acrylic chất lượng cao tại thị trường Việt Nam.
             </p>
 
             <p>

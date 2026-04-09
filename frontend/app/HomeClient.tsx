@@ -52,7 +52,7 @@ export default function HomeClient({
       <div className="introduce">
         <h1 className="title">Giới thiệu về Lara</h1>
         <p style={{fontSize: 18, marginBottom: 10}}>
-          Công ty TNHH SX và KD TM Hòa Thịnh (Thương hiệu LARA) là một trong những đơn vị sản xuất,
+          Công ty TNHH SX và KD TM Kim Anh (Thương hiệu LARA) là một trong những đơn vị sản xuất,
           phân phối và thi công vật liệu Acrylic chất lượng cao tại thị trường Việt Nam.
         </p>
         <p style={{fontSize: 18, marginBottom: 10}}>
@@ -129,7 +129,10 @@ export default function HomeClient({
           </div>
         </div>
 
-        <div className="catalog-card" onClick={() => router.push('/products/acrylic-chong-tray-xuoc')}>
+        <div
+          className="catalog-card"
+          onClick={() => router.push('/products/acrylic-chong-tray-xuoc')}
+        >
           <Image
             src="/images/catalog2.jpg"
             alt="danh muc 2"
