@@ -19,7 +19,7 @@ const HomePage = () => {
         />
         <div className="content">
           <h1>Sứ mệnh LARA ACRYLIC</h1>
-          <p style={{fontSize: 21}}>
+          <p style={{fontSize: 28}}>
             Mang đến vật liệu bền đẹp, hiện đại, nâng tầm không gian và giá trị sử dụng
           </p>
         </div>

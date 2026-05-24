@@ -59,7 +59,7 @@ export default function ProductsClient({
         />
         <div className="content">
           <h1>Sản phẩm {categoryTitle}</h1>
-          <p style={{fontSize: 18}}>Sáng không gian, sang đẳng cấp</p>
+          <p style={{fontSize: 28}}>Sáng không gian, sang đẳng cấp</p>
         </div>
       </div>
 

@@ -43,7 +43,7 @@ export default function NewsClient({newsData}: {newsData: News[]}) {
         />
         <div className="content">
           <h1>Tin tức</h1>
-          <p style={{fontSize: 18}}>
+          <p style={{fontSize: 28}}>
             Tất tần tật về thế giới Acrylic – Từ vật liệu dẫn đầu xu hướng đến giải pháp tối ưu cho
             không gian sống hiện đại
           </p>

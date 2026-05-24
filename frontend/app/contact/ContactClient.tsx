@@ -100,7 +100,7 @@ export default function ContactClient({contactsData}: {contactsData: Contact[]})
 
         <div className="content">
           <h1>Liên hệ với chúng tôi</h1>
-          <p style={{fontSize: 21}}>Kết nối ngay - Nhận giải pháp hay</p>
+          <p style={{fontSize: 28}}>Kết nối ngay - Nhận giải pháp hay</p>
         </div>
       </div>
 

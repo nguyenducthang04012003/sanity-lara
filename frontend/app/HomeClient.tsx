@@ -33,8 +33,8 @@ export default function HomeClient({
     <div className="home-page">
       <div className="hero">
         <Image
-          src="/images/pageHome.jpg"
-          alt="Livas"
+          src="/images/bgredit.jpg"
+          alt="Lara"
           fill
           quality={100}
           priority
@@ -43,7 +43,7 @@ export default function HomeClient({
         />
         <div className="content">
           <h1>LARA ACRYLIC</h1>
-          <p style={{fontSize: 21}}>
+          <p style={{fontSize: 28}}>
             Định hình không gian, tô điểm phong cách cùng vật liệu Acrylic
           </p>
         </div>

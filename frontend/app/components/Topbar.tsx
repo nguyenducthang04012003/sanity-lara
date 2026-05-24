@@ -82,9 +82,9 @@ export default function Topbar({categories}: {categories: Category[]}) {
         <Image
           src="/images/logo-removebg-preview.png"
           alt="logo"
-          width={170}
+          width={350}
           height={60}
-          style={{objectFit: 'contain', cursor: 'pointer'}}
+          style={{objectFit: 'contain', cursor: 'pointer', marginTop: 25}}
         />
       </Link>
 
@@ -98,7 +98,7 @@ export default function Topbar({categories}: {categories: Category[]}) {
         style={{
           flex: 1,
           marginLeft: 40,
-          fontSize: 18,
+          fontSize: 26,
           borderBottom: 'none',
           background: 'transparent',
         }}
