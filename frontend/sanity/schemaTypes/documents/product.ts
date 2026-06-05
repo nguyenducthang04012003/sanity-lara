@@ -63,5 +63,12 @@ export default defineType({
       type: 'string',
       description: 'Ví dụ: Trắng, Đen, Vân gỗ',
     }),
+
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [{type: 'block'}, {type: 'image'}],
+    }),
   ],
 })

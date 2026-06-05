@@ -190,6 +190,14 @@ export const productDetailQuery = `
   size,
   color,
   madein,
+  content[]{
+    ...,
+    _type == "image" => {
+      ...,
+      "url": asset->url
+    }
+  },
+  
   "image": image.asset->url,
   "madeinflag": madeinflag.asset->url,
 

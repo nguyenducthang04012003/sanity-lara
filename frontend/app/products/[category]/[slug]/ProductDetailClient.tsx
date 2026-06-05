@@ -3,8 +3,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {useState} from 'react'
+import {FiDownload} from 'react-icons/fi'
+import {PortableText} from '@portabletext/react'
+import {PortableTextComponents} from '@portabletext/react'
 import '../../../../styles/NewsDetail.css'
 import '../../../../styles/Productsdetail.css'
+
+type Block = {
+  _key: string
+  _type: string
+  children: {
+    _key: string
+    text: string
+  }[]
+}
 
 type Product = {
   _id: string
@@ -16,6 +28,7 @@ type Product = {
   madein: string
   madeinflag: string
   slug: string
+  content: Block[]
   category: {
     title: string
     slug: string
@@ -48,6 +61,25 @@ export default function ProductDetailClient({
     }
   }
 
+  const components: PortableTextComponents = {
+    types: {
+      image: ({value}) => (
+        <Image
+          src={value.url}
+          alt="product image"
+          width={900}
+          height={600}
+          style={{
+            width: '100%',
+            height: 'auto',
+            margin: '30px 0',
+            borderRadius: '6px',
+          }}
+        />
+      ),
+    },
+  }
+
   return (
     <div className="product-detail">
       {/* MAIN */}
@@ -62,20 +94,15 @@ export default function ProductDetailClient({
             alt={product.name}
             width={500}
             height={400}
-            className='img-product-detail'
+            className="img-product-detail"
           />
-          {/* <div className="download-wrapper">
-            <a
-              href={product.image}
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="download-btn"
-            >
-              <FiDownload />
-              Tải ảnh
-            </a>
-          </div> */}
+          <a
+            href={`/api/download?url=${encodeURIComponent(product.image)}`}
+            className="download-btn"
+          >
+            Download texture
+            <FiDownload />
+          </a>
         </div>
 
         <div className="product-in4">
@@ -110,6 +137,11 @@ export default function ProductDetailClient({
             )}
           </div>
         </div>
+        {product.content?.length > 0 && (
+          <div className="product-content">
+            <PortableText value={product.content} components={components} />
+          </div>
+        )}
       </div>
 
       {/* RELATED */}
