@@ -17,10 +17,14 @@ export default async function HomePage() {
   const newsData = news.slice(0, 3).map((item: any) => ({
     id: item._id,
     title: item.title,
+    slug: item.slug?.current || '',
     date: item.publishedAt ? new Date(item.publishedAt).toLocaleDateString('vi-VN') : '',
     description: item.excerpt,
     image: item.thumbnail,
   }))
+
+  console.log('Product Data:', productData)
+  console.log('News Data:', newsData)
 
   return <HomeClient productData={productData} newsData={newsData} />
 }

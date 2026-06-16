@@ -16,6 +16,7 @@ type Product = {
 type News = {
   id: string
   title: string
+  slug: string
   date: string
   description: string
   image: string
@@ -81,28 +82,34 @@ export default function HomeClient({
 
         <div className="lightproduct">
           {productData.map((item) => (
-            <div key={item.id}>
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={300}
-                height={200}
-                className="product-img"
-              />
+            <Link
+              key={item.id}
+              href={`/products/${item.category}/${item.name}`}
+              style={{textDecoration: 'none', color: 'inherit'}}
+            >
+              <div>
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={300}
+                  height={200}
+                  className="product-img"
+                />
 
-              <p
-                style={{
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  color: '#0000005a',
-                  marginBottom: 0,
-                }}
-              >
-                {item.category}
-              </p>
+                <p
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    color: '#0000005a',
+                    marginBottom: 0,
+                  }}
+                >
+                  {item.category}
+                </p>
 
-              <p className="nameproduct">{item.name}</p>
-            </div>
+                <p className="nameproduct">{item.name}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -167,17 +174,23 @@ export default function HomeClient({
 
         <div className="news-grid">
           {newsData.map((item) => (
-            <div className="news-card" key={item.id}>
-              <div className="news-image">
-                <Image src={item.image} alt={item.title} width={400} height={250} />
+            <Link
+              key={item.id}
+              href={`/news/${item.slug}`}
+              style={{textDecoration: 'none', color: 'inherit'}}
+            >
+              <div className="news-card">
+                <div className="news-image">
+                  <Image src={item.image} alt={item.title} width={400} height={250} />
+                </div>
+
+                <h3 className="news-title">{item.title}</h3>
+
+                <p className="news-date">{item.date}</p>
+
+                <p className="news-desc">{item.description}</p>
               </div>
-
-              <h3 className="news-title">{item.title}</h3>
-
-              <p className="news-date">{item.date}</p>
-
-              <p className="news-desc">{item.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
